@@ -1,0 +1,5 @@
+{
+  "name": "BacMR PR Security Gate",
+  "description": "Gitleaks + Trivy + Semgrep scan on every pull request via BacMR/github-security-workflows.",
+  "categories": ["Code quality"]
+}
