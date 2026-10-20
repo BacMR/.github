@@ -14,6 +14,13 @@ updates:
     open-pull-requests-limit: 5
     cooldown:
       default-days: 7
+    # BacMR/github-security-workflows is a PRIVATE repo; Dependabot's job token
+    # cannot clone it ("git_dependencies_not_reachable"), which failed every run of
+    # this ecosystem. Its ref (@main) is maintained by hand; ignoring it keeps the
+    # other actions updating.
+    ignore:
+      - dependency-name: "BacMR/github-security-workflows"
+      - dependency-name: "BacMR/github-security-workflows/*"
     groups:
       actions:
         patterns:
