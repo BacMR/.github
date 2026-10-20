@@ -1,0 +1,20 @@
+version: 2
+
+# Org meta repo: the only dependencies are the GitHub Actions used by its own
+# workflow (.github/workflows/pr-security.yml). Monthly + grouped keeps CI cost
+# low (Actions minutes are a hard budget, see BacMR/docs#27); security updates
+# are advisory-driven and fire independently of this schedule.
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Africa/Nouakchott"
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
