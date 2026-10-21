@@ -2,13 +2,13 @@
 
 **AI tutor for Mauritania's national baccalaureate.** A student asks a question in Arabic, French or English and gets a grounded, Socratic answer with citations into the official curriculum. Built by Lebjawi Tech.
 
-## How the platform is organised (since 2026-10-20)
+## How the platform is organised (layout since 2026-10-20, live since the 2026-10-21 cutover)
 
-One repo per deployable. Every client talks only to the gateway.
+One repo per deployable. Every client talks only to the gateway. Public hostnames: `api.bacmr.com` (the API), `admin.bacmr.com` (admin dashboard), `bacmr.com` (site + chat) and `docs.bacmr.com` (engineering docs); the services behind the gateway have no public hostname.
 
 | Repo | Role |
 |---|---|
-| [`api-gateway`](https://github.com/BacMR/api-gateway) | **The only public API** (`api.bacmr.com`): auth with Zitadel, wallets and billing, admin operations, rate limits. Calls tutor and knowledge on the VPS network. |
+| [`api-gateway`](https://github.com/BacMR/api-gateway) | **The only public API** (`api.bacmr.com`): auth with Zitadel (the only identity provider), wallets and billing, admin operations, rate limits, moderation through LiteLLM. Calls tutor and knowledge on the VPS network. |
 | [`tutor`](https://github.com/BacMR/tutor) | Turns a question into a streamed answer: understanding, evidence from knowledge, prompt assembly, sufficiency check. Owns the `tutor` schema. |
 | [`knowledge`](https://github.com/BacMR/knowledge) | Curriculum ingestion (parse, figures, chunk, enrich, embed, QA gate) and retrieval (hybrid lanes, fusion, rerank). Owns the `content` schema. |
 | [`scraper-worker`](https://github.com/BacMR/scraper-worker) | Pulls curriculum PDFs from the government site into the ingestion queue. |
@@ -24,7 +24,7 @@ One repo per deployable. Every client talks only to the gateway.
 | [`github-security-workflows`](https://github.com/BacMR/github-security-workflows) | The reusable PR Security Gate and the daily org scan. |
 | `.github` (this repo) | Org profile, workflow templates, security policy. |
 
-Archived, read-only, never edited: `archive-backend` (the 2026 monolith the services were extracted from) and `archive-rag-engine` (the first RAG engine).
+Archived, read-only, never edited, and **no longer serving anything** since the cutover of 2026-10-21: `archive-backend` (the 2026 monolith the services were extracted from) and `archive-rag-engine` (the first RAG engine). They are the source of record for history only.
 
 ## How work happens
 
