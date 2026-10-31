@@ -4,7 +4,7 @@
 
 ## How the platform is organised (layout since 2026-10-20, live since the 2026-10-21 cutover)
 
-One repo per deployable. Every client talks only to the gateway. Public hostnames: `api.bacmr.com` (the API), `admin.bacmr.com` (admin dashboard), `bacmr.com` (site + chat) and `docs.bacmr.com` (engineering docs); the services behind the gateway have no public hostname.
+One repo per deployable. Every client talks only to the gateway. Public hostnames: `api.bacmr.com` (the API), `admin.bacmr.com` (admin dashboard), `bacmr.com` (site + chat) and `docs.bacmr.com` (engineering docs, sign-in required; the public pitch is `vision.bacmr.ai`); the services behind the gateway have no public hostname.
 
 | Repo | Role |
 |---|---|
